@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Remove</title>
+</head>
+<body style="background-image: url('hospital.jpg');background-repeat: no-repeat;background-size: cover;">
+    <center>
+           <form>
+            Enter Patient name to remove full record of Patient<br><br>
+            <input type="text" id="f_name" size="20" name="f_name" style="width: 250px;height: 30px;"><br><br>
+            <button onclick="removing()"  style="width: 200px;height: 50px;background-color: lightblue;">
+                Submit
+            </button><br>
+           </form>
+    </center>
+    <br>
+    <script>
+        function removing(){
+            var name = document.getElementById("f_name").value;
+            if(name==""){
+              alert("Name must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(name);
+            data.splice(index,index+6);
+            localStorage.clear();
+            if(localStorage.getItem('database')==null){
+              localStorage.setItem('database','[]');
+            }
+            var old_data=JSON.parse(localStorage.getItem('database'));
+            for (let i = 0; i < data.length; i++) {
+                old_data.push(data[i]);
+            }
+            localStorage.setItem('database',JSON.stringify(old_data));
+            alert("Removed SuccessFully");
+        }
+        }
+    </script>
+    
+</body>
+</html>

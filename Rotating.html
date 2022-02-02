@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rotating image</title>
+</head>
+<body style="background-image: url('hospital.jpg');background-repeat: no-repeat;background-size: cover;">
+    <center>
+        <img id="img" src="1.png" /><br>
+        <button onClick="rotateImg()" style="width: 200px;height: 50px;background-color: lightblue;">Rotate Image</button>
+    </center>
+    <script>
+      let rotation = 0;
+      function rotateImg() {
+        rotation += 90; 
+        if (rotation === 360) { 
+          rotation = 0;
+        }
+        document.querySelector("#img").style.transform = `rotate(${rotation}deg)`;
+      }
+    </script>
+  </body>
+</html>

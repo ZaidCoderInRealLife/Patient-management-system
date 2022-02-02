@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit</title>
+</head>
+<body style="background-image: url('hospital.jpg');background-repeat: no-repeat;background-size: cover;">
+    <center>
+        <form>
+            Enter Unique number to Edit<br><br>
+            <input type="text" id="unique" size="20" name="unique" style="width: 250px;height: 30px;"><br><br>
+            <button onclick="editingName()" style="width: 200px;height: 50px;background-color: lightblue;">
+                Edit name
+            </button><br><br>
+            <button onclick="editingFirstname()" style="width: 200px;height: 50px;background-color: lightblue;">
+                Edit First name
+            </button><br><br>
+            <button onclick="editingDateofbirth()" style="width: 200px;height: 50px;background-color: lightblue;">
+                Edit Date of Birth
+            </button><br><br>
+            <button onclick="editingPlaceofbirth()" style="width: 200px;height: 50px;background-color: lightblue;">
+                Edit Place of Birth
+            </button><br><br>
+            <button onclick="editingimage()" style="width: 200px;height: 50px;background-color: lightblue;">
+                Edit Image location
+            </button><br><br>
+           </form>
+    </center>
+    <script>
+        function editingName(){
+            var unique = document.getElementById("unique").value;
+            if(unique==""){
+              alert("Unique number must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(unique);
+            console.log(index);
+            if(index==(-1)){
+                alert("Not Found");
+            }
+            else{
+                var name = prompt("Enter new Name", "");
+                if(name==null){
+                    name = prompt("Enter new Name", "");
+                }
+                else{
+                    data[index-4]=name;
+                    localStorage.clear();
+                    if(localStorage.getItem('database')==null){
+                    localStorage.setItem('database','[]');
+                    }
+                    var old_data=JSON.parse(localStorage.getItem('database'));
+                    for (let i = 0; i < data.length; i++) {
+                        old_data.push(data[i]);
+                    }
+                    localStorage.setItem('database',JSON.stringify(old_data));
+                    alert("Edited SuccessFully");
+                }
+            }
+        }
+        }
+        function editingFirstname(){
+            var unique = document.getElementById("unique").value;
+            if(unique==""){
+              alert("Unique number must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(unique);
+            console.log(index);
+            if(index==(-1)){
+                alert("Not Found");
+            }
+            else{
+                var name = prompt("Enter new First Name", "");
+                if(name==null){
+                    name = prompt("Enter new First Name", "");
+                }
+                else{
+                    data[index-3]=name;
+                    localStorage.clear();
+                    if(localStorage.getItem('database')==null){
+                    localStorage.setItem('database','[]');
+                    }
+                    var old_data=JSON.parse(localStorage.getItem('database'));
+                    for (let i = 0; i < data.length; i++) {
+                        old_data.push(data[i]);
+                    }
+                    localStorage.setItem('database',JSON.stringify(old_data));
+                    alert("Edited SuccessFully");
+                }
+            }
+        }      
+        }
+        function editingDateofbirth(){
+            var unique = document.getElementById("unique").value;
+            if(unique==""){
+              alert("Unique number must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(unique);
+            console.log(index);
+            if(index==(-1)){
+                alert("Not Found");
+            }
+            else{
+                var name = prompt("Please Enter date in Correct format(yy-dd-mm)", "");
+                if(name==null){
+                    name = prompt("Please Enter date in Correct format(yy-dd-mm)", "");
+                }
+                else{
+                    data[index-2]=name;
+                    localStorage.clear();
+                    if(localStorage.getItem('database')==null){
+                    localStorage.setItem('database','[]');
+                    }
+                    var old_data=JSON.parse(localStorage.getItem('database'));
+                    for (let i = 0; i < data.length; i++) {
+                        old_data.push(data[i]);
+                    }
+                    localStorage.setItem('database',JSON.stringify(old_data));
+                    alert("Edited SuccessFully");
+                }
+            }
+        }
+        }
+        function editingPlaceofbirth(){
+            var unique = document.getElementById("unique").value;
+            if(unique==""){
+              alert("Unique number must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(unique);
+            console.log(index);
+            if(index==(-1)){
+                alert("Not Found");
+            }
+            else{
+                var name = prompt("Please Enter Place of Birth", "");
+                if(name==null){
+                    name = prompt("Please Enter date Place of Birth", "");
+                }
+                else{
+                    data[index-1]=name;
+                    localStorage.clear();
+                    if(localStorage.getItem('database')==null){
+                    localStorage.setItem('database','[]');
+                    }
+                    var old_data=JSON.parse(localStorage.getItem('database'));
+                    for (let i = 0; i < data.length; i++) {
+                        old_data.push(data[i]);
+                    }
+                    localStorage.setItem('database',JSON.stringify(old_data));
+                    alert("Edited SuccessFully");
+                }
+            }
+        }
+        }
+        function editingimage(){
+            var unique = document.getElementById("unique").value;
+            if(unique==""){
+              alert("Unique number must be Entered");
+              return false;
+            } 
+            if(localStorage.getItem('database')!=null){
+            let data  = JSON.parse(localStorage.getItem('database'));
+            var index=data.indexOf(unique);
+            console.log(index);
+            if(index==(-1)){
+                alert("Not Found");
+            }
+            else{
+                var name = prompt("Please Enter correct location", "");
+                if(name==null){
+                    name = prompt("Please Enter correct location", "");
+                }
+                else{
+                    data[index+1]=name;
+                    localStorage.clear();
+                    if(localStorage.getItem('database')==null){
+                    localStorage.setItem('database','[]');
+                    }
+                    var old_data=JSON.parse(localStorage.getItem('database'));
+                    for (let i = 0; i < data.length; i++) {
+                        old_data.push(data[i]);
+                    }
+                    localStorage.setItem('database',JSON.stringify(old_data));
+                    alert("Edited SuccessFully");
+                }
+            }}
+        }
+    </script>
+</body>
+</html>

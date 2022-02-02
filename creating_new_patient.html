@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Creating new Patient</title>
+    
+</head>
+<body style="background-image: url('hospital.jpg');background-repeat: no-repeat;background-size: cover;">
+    <center>
+        <form>
+            Name <br>
+            <input type="text" id="f_name" size="20" name="f_name" style="width: 250px;height: 30px;"><br>
+            First name <br>
+            <input type="text" id="f_firstname" size="20" name="f_firstname" style="width: 250px;height: 30px;"><br>
+            Date of Birth <br>
+            <input type="date" id="f_dateofbirth" size="20" name="f_dateofbirth" style="width: 250px;height: 30px;"><br>
+            Place of birth <br>
+            <input type="text" id="f_placeofbirth" size="20" name="f_placeofbirth" style="width: 250px;height: 30px;"><br><br>
+            <input type="file" id="image_file" size="20" name="file"><br><br>
+            <button onclick="save()" style="width: 100px;height: 30px;background-color: lightblue;">
+                Save
+            </button>
+          </form>
+    </center>
+    <script>
+        function save() {
+            var unique=Math.floor(Math.random() * 1000000);
+          var name = document.getElementById("f_name").value;
+          var firstname=document.getElementById("f_firstname").value;
+          var date=document.getElementById("f_dateofbirth").value;
+          var birth=document.getElementById("f_placeofbirth").value;
+          var image_file=document.getElementById("image_file").value;
+          if(name==""){
+              alert("Name must be Entered");
+              return false;
+          } 
+          else if(firstname==""){
+              alert("First Name must be Entered");
+              return false;
+          } 
+          else if(date==""){
+              alert("Date of birth must be Entered");
+              return false;
+          } 
+          else if(birth==""){
+              alert("Place of Birth must be Entered");
+              return false;
+          }
+          else if(image_file==""){
+            alert("image must be Entered");
+              return false;
+          }
+          if(localStorage.getItem('database')==null){
+              localStorage.setItem('database','[]');
+          }
+          var old_data=JSON.parse(localStorage.getItem('database'));
+          old_data.push(name,firstname,date,birth,unique.toString(),JSON.stringify(image_file));
+          localStorage.setItem('database',JSON.stringify(old_data));
+          console.log(image_file);
+          console.log();
+           alert("SuccessFully ADDED");
+        }
+        </script>
+      
+    <br>
+</body>
+</html>
+
+
+
+
+

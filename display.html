@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Display</title>
+</head>
+<body style="background-image: url('hospital.jpg');background-repeat: no-repeat;background-size: cover;">
+    <table>
+        <tr>
+            <td style="width: 100px;height: 100px;">
+                <div  id="image" >
+                </div>
+            </td>
+            <td style="width: 100px;height: 100px;">
+                <center>
+                        <div id='output'>    
+                        </div>
+            </center>
+            </td>
+        </tr>
+    </table>
+    <script>
+        if(localStorage.getItem('database')!=null){
+            var data  = JSON.parse(localStorage.getItem('database'));
+            var integer=5;
+            var incre=0;
+            for (let i = 0; i < data.length; i++) {
+                if(i!=integer){
+                    document.getElementById('output').innerHTML+=data[i]+"<br><hr>";
+                    
+                }
+                else if(i==integer){
+                     incre++;
+                     integer=((i+5)+incre);
+                     var img = document.createElement("img");
+                     img.setAttribute('src', (data[i].slice(data[i].length-6,data[i].length-1)).toString());
+                     img.setAttribute('style','height:100px');
+                     document.getElementById('image').appendChild(img);
+                     document.getElementById('image').innerHTML+="<br><hr>";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
